@@ -1,0 +1,32 @@
+-- Calculate the rental duration in days for each rental
+SELECT
+    rental_id,
+    rental_date,
+    return_date,
+    DATEDIFF(return_date, rental_date) AS rental_days
+FROM rentals;
+-- Find the total payment amount collected through each payment method.
+SELECT
+    payment_method,
+    SUM(payment_amount) AS total_payment
+FROM payments
+GROUP BY payment_method;
+
+-- Display customer names after removing any leading and trailing spaces.
+SELECT
+    customer_id,
+    TRIM(customer_name) AS customer_name
+FROM customers;
+-- Display each vehicle's daily rental rate and its square value.
+SELECT
+    vehicle_name,
+    daily_rate,
+    POWER(daily_rate, 2) AS rate_square
+FROM vehicles;
+  -- Display vehicle names and their availability status. If the availability value is NULL, display 'Not Specified'.
+SELECT
+    vehicle_id,
+    vehicle_name,
+    IFNULL(availability, 'Not Specified') AS availability_status
+FROM vehicles;
+
